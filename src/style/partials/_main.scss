@@ -4,8 +4,16 @@ main {
   .no-todos-message {
     text-align: center;
     font-size: 36pt;
-    margin-top: 15%;
+    margin-top: 12%;
     transform: translateY(-50%);
+    @media screen and (max-width: 700px) {
+      font-size: 32pt;
+      margin-top: 20%;
+    }
+    @media screen and (max-width: 430px) {
+      font-size: 20pt;
+      margin-top: 30%;
+    }
     // TODO: Maybe add gradient to the text
   }
   .todos {
@@ -34,6 +42,9 @@ main {
         max-width: 90%;
         word-wrap: break-word;
         cursor: pointer;
+        @media screen and (max-width: 430px) {
+          font-size: 14pt;
+        }
       }
       span {
         position: absolute;

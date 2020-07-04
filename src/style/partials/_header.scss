@@ -9,6 +9,9 @@ header {
   .title {
     font-size: 42pt;
     color: #eee;
+    @media screen and (max-width: 430px) {
+      font-size: 30pt;
+    }
   }
   #add-todo-form {
     display: flex;
@@ -31,6 +34,9 @@ header {
       &:focus {
         color: #eee;
         box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.1);
+      }
+      @media screen and (max-width: 430px) {
+        font-size: 13pt;
       }
     }
   }
