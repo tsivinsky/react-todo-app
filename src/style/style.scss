@@ -1,0 +1,18 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  box-sizing: border-box;
+  font-family: Helvetica;
+}
+
+html,
+body,
+#root,
+#root:first-child {
+  height: 100%;
+}
+
+// Import partials
+@import "./partials/header";
+@import "./partials/main";

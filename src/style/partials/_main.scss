@@ -1,0 +1,50 @@
+main {
+  width: 100%;
+  margin: 0 auto;
+  .no-todos-message {
+    text-align: center;
+    font-size: 36pt;
+    margin-top: 15%;
+    transform: translateY(-50%);
+    // TODO: Maybe add gradient to the text
+  }
+  .todos {
+    width: 50%;
+    margin: 30px auto;
+    .todo {
+      position: relative;
+      left: 0;
+      top: 0;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: 3px 3px 20px 4px rgba(0, 0, 0, 0.1);
+      padding: 30px 5px;
+      margin-top: 10px;
+      font-size: larger;
+      transition: box-shadow 0.5s ease;
+      &:not([data-gap="false"]) {
+        margin: 40px 0;
+      }
+      &:hover {
+        box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
+      }
+      h3 {
+        max-width: 90%;
+        word-wrap: break-word;
+        cursor: pointer;
+      }
+      span {
+        position: absolute;
+        right: -45px;
+        top: 40%;
+        cursor: pointer;
+        transition: transform 0.5s ease;
+        &:hover {
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 15px;
+  background: rgb(41, 77, 88);
+  height: 35%;
+  .title {
+    font-size: 42pt;
+    color: #eee;
+  }
+  #add-todo-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    input {
+      margin: 0 auto;
+      width: 70%;
+      padding: 10px;
+      border: 2px solid rgb(105, 105, 105);
+      color: #aaa;
+      font-size: 16pt;
+      background: none;
+      transition: all 0.5s ease;
+      transition-property: color, box-shadow;
+      &:hover {
+        box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.05);
+      }
+      &:focus {
+        color: #eee;
+        box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
