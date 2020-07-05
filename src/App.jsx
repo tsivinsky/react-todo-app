@@ -1,23 +1,20 @@
 // Import dependencies
 import React from "react";
-import useTodos from "./useTodos";
+import useTodos from "./hooks/useTodos";
 
 // Import components
 import TodoForm from "./components/TodoForm";
 import Todo from "./components/Todo";
 
 export default function App() {
-  const [todos, addTodo, completeTodo, removeTodo] = useTodos(
-    JSON.parse(localStorage.getItem("todos"))
-  );
+  // Global states
+  const [todos, addTodo, completeTodo, removeTodo] = useTodos();
 
   return (
     <>
       <header>
         <h1 className="title">Todo App</h1>
-        <TodoForm
-          onAdd={(value) => addTodo({ text: value, completed: false })}
-        />
+        <TodoForm onAdd={(value) => addTodo(value)} />
       </header>
       <main>
         {todos.length === 0 ? (
