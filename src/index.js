@@ -1,19 +1,22 @@
 // Import dependencies
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import Store from "./store/store";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// Import App component
+// Import components
 import App from "./App";
+import NotFoundPage from "./NotFoundPage";
 
 // Import styles
 import "./style/style.scss";
 
 // Render App component to the DOM
 ReactDOM.render(
-  <Provider store={Store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Switch>
+      <Route path="/" exact component={App} />
+      <Route path="*" component={NotFoundPage} />
+    </Switch>
+  </Router>,
   document.getElementById("root")
 );
