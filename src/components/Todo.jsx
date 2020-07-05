@@ -11,20 +11,9 @@ const todoStyle = {
   opacity: "1",
 };
 
-export default function Todo({
-  id,
-  text,
-  completed,
-  count,
-  onComplete,
-  onDelete,
-}) {
-  // TODO: Now, when I complete todo, this component will not re-render. I need to subscribe it for store changes
+export default function Todo({ id, text, completed, onComplete, onDelete }) {
   return (
-    <div
-      className="todo"
-      data-gap={count === "first" || count === "last" ? "false" : "true"}
-    >
+    <div className="todo">
       <h3
         style={completed ? completedTodoStyle : todoStyle}
         onClick={() => onComplete(id)}
