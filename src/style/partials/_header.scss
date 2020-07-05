@@ -6,6 +6,9 @@ header {
   padding: 15px;
   background: rgb(41, 77, 88);
   height: 35%;
+  @media screen and (max-width: 430px) {
+    height: 60%;
+  }
   .title {
     font-size: 42pt;
     color: #eee;
