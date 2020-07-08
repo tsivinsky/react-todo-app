@@ -1,0 +1,37 @@
+@mixin todo-mixin {
+  position: relative;
+  left: 0;
+  top: 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px 4px rgba(0, 0, 0, 0.1);
+  padding: 30px 5px;
+  margin-top: 10px;
+  font-size: larger;
+  margin: 40px 0;
+  cursor: pointer;
+  transition: box-shadow 0.5s ease;
+  &:hover {
+    box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
+  }
+  h3 {
+    max-width: 90%;
+    word-wrap: break-word;
+    @media screen and (max-width: 430px) {
+      font-size: 14pt;
+    }
+  }
+  span {
+    position: absolute;
+    right: -45px;
+    top: 40%;
+    z-index: 999;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    &:hover {
+      transform: scale(1.5);
+    }
+  }
+}

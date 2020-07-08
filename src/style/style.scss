@@ -14,5 +14,6 @@ body,
 }
 
 // Import partials
+@import "./partials/mixins";
 @import "./partials/header";
 @import "./partials/main";
