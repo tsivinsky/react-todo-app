@@ -20,40 +20,47 @@ main {
     width: 50%;
     margin: 30px auto;
     .todo {
-      position: relative;
-      left: 0;
-      top: 0;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      border-radius: 10px;
-      box-shadow: 3px 3px 20px 4px rgba(0, 0, 0, 0.1);
-      padding: 30px 5px;
-      margin-top: 10px;
-      font-size: larger;
-      margin: 40px 0;
-      transition: box-shadow 0.5s ease;
-      &:hover {
-        box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
-      }
-      h3 {
-        max-width: 90%;
-        word-wrap: break-word;
-        cursor: pointer;
-        @media screen and (max-width: 430px) {
-          font-size: 14pt;
-        }
-      }
-      span {
-        position: absolute;
-        right: -45px;
-        top: 40%;
-        cursor: pointer;
-        transition: transform 0.5s ease;
-        &:hover {
-          transform: scale(1.5);
-        }
-      }
+      @include todo-mixin;
+    }
+    .todo-enter {
+      opacity: 0;
+    }
+    .todo-enter-active {
+      opacity: 1;
+      transition: opacity 300ms ease;
+    }
+    .todo-exit {
+      opacity: 1;
+    }
+    .todo-exit-active {
+      opacity: 0;
+      transition: opacity 300ms ease;
     }
   }
+  .show-todos-enter {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  .show-todos-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  .show-todos-exit {
+    opacity: 1;
+  }
+  .show-todos-exit-active {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 300ms, transform 300ms;
+  }
+}
+
+.todo,
+.todo-dragging {
+  @include todo-mixin;
+}
+
+.todo-dragging {
+  background: rgba(0, 0, 0, 0.1);
 }
