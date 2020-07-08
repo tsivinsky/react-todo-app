@@ -12,14 +12,6 @@ export default function App() {
   // Global state
   const [todos, addTodo, completeTodo, removeTodo, moveTodo] = useTodos();
 
-  // Local states
-  const [showMessage, setShowMessage] = useState(true);
-  const [showTodos, setShowTodos] = useState(false);
-
-  useEffect(() => {
-    if (todos && todos.length > 0) setShowTodos(true);
-  }, [todos]);
-
   const SortableItem = SortableElement(({ id, text, completed }) => (
     <Todo
       id={id}
@@ -31,18 +23,16 @@ export default function App() {
   ));
 
   const SortableList = SortableContainer(() => (
-    <TransitionGroup className="todos">
+    <div className="todos">
       {todos.map((todo, i) => (
-        <CSSTransition key={i} timeout={300} classNames="todo">
-          <SortableItem
-            index={i}
-            id={todo._id}
-            text={todo.text}
-            completed={todo.completed}
-          />
-        </CSSTransition>
+        <SortableItem
+          index={i}
+          id={todo._id}
+          text={todo.text}
+          completed={todo.completed}
+        />
       ))}
-    </TransitionGroup>
+    </div>
   ));
 
   function cancelDragging(e) {
@@ -57,28 +47,19 @@ export default function App() {
         <TodoForm onAdd={(value) => addTodo(value)} />
       </header>
       <main>
-        {showMessage && (
+        {todos.length === 0 ? (
           <h2 className="no-todos-message">
             You do not have any tasks. <br />
             It`s a freetime! ⌛
           </h2>
-        )}
-
-        <CSSTransition
-          in={showTodos}
-          timeout={300}
-          classNames="show-todos"
-          unmountOnExit
-          onEnter={() => setShowMessage(false)}
-          onExited={() => setShowMessage(true)}
-        >
+        ) : (
           <SortableList
             onSortEnd={({ oldIndex, newIndex }) => moveTodo(oldIndex, newIndex)}
             shouldCancelStart={cancelDragging}
             lockAxis="y"
             helperClass="todo-dragging"
           />
-        </CSSTransition>
+        )}
       </main>
     </>
   );

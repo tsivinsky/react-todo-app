@@ -22,37 +22,6 @@ main {
     .todo {
       @include todo-mixin;
     }
-    .todo-enter {
-      opacity: 0;
-    }
-    .todo-enter-active {
-      opacity: 1;
-      transition: opacity 300ms ease;
-    }
-    .todo-exit {
-      opacity: 1;
-    }
-    .todo-exit-active {
-      opacity: 0;
-      transition: opacity 300ms ease;
-    }
-  }
-  .show-todos-enter {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  .show-todos-enter-active {
-    opacity: 1;
-    transform: translateX(0);
-    transition: opacity 300ms, transform 300ms;
-  }
-  .show-todos-exit {
-    opacity: 1;
-  }
-  .show-todos-exit-active {
-    opacity: 0;
-    transform: scale(0.9);
-    transition: opacity 300ms, transform 300ms;
   }
 }
 
