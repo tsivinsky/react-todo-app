@@ -10,12 +10,15 @@
     "test": "react-scripts test"
   },
   "dependencies": {
+    "array-move": "^2.2.2",
     "axios": "^0.19.2",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.1",
+    "react-sortable-hoc": "^1.11.0",
+    "react-transition-group": "^4.4.1",
     "uuid": "^8.2.0"
   },
   "browserslist": {
