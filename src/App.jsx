@@ -1,7 +1,6 @@
 // Import dependencies
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useTodos from "./hooks/useTodos";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 
 // Import components
@@ -26,6 +25,7 @@ export default function App() {
     <div className="todos">
       {todos.map((todo, i) => (
         <SortableItem
+          key={i}
           index={i}
           id={todo._id}
           text={todo.text}
@@ -36,8 +36,9 @@ export default function App() {
   ));
 
   function cancelDragging(e) {
-    if (["span", "h3"].indexOf(e.target.tagName.toLowerCase()) !== -1)
-      return true;
+    if (["todo"].indexOf(e.target.className.toLowerCase()) !== -1) return false;
+
+    return true;
   }
 
   return (
