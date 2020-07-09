@@ -4,14 +4,13 @@ import * as uuid from "uuid";
 import arrayMove from "array-move";
 
 export default function useTodos() {
-  const [todos, setTodos] = useState([]);
-
-  // Get todos from localStorage on first loading
-  useEffect(() => {
+  const [todos, setTodos] = useState(() => {
     if (localStorage.getItem("todos")) {
-      setTodos(JSON.parse(localStorage.getItem("todos")));
+      return JSON.parse(localStorage.getItem("todos"));
     }
-  }, []);
+
+    return [];
+  });
 
   // Save todos in localStorage when they change
   useEffect(() => {
