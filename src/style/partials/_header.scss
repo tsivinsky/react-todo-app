@@ -30,13 +30,14 @@ header {
       font-size: 16pt;
       background: none;
       transition: all 0.5s ease;
-      transition-property: color, box-shadow;
+      transition-property: color, box-shadow, border-color;
       &:hover {
-        box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 0 3px 4px rgba(0, 0, 0, 0.05);
       }
       &:focus {
-        color: #eee;
-        box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.1);
+        color: #ddd;
+        box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.1);
+        border-color: #ccc;
       }
       @media screen and (max-width: 430px) {
         font-size: 13pt;
