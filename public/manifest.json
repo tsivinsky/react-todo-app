@@ -1,0 +1,12 @@
+{
+  "name": "Todo App",
+  "shortname": "Todo App",
+  "description": "A To Do application for your tasks",
+  "start_url": ".",
+  "background_color": "#fff",
+  "related_applications": [
+    {
+      "platform": "web"
+    }
+  ]
+}
