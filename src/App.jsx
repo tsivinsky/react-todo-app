@@ -84,6 +84,8 @@ export default function App() {
             lockAxis="y"
             helperClass="todo-dragging"
             shouldCancelStart={cancelDragging}
+            lockToContainerEdges={true}
+            lockOffset="30px"
           />
         )}
       </main>
