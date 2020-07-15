@@ -12,7 +12,7 @@
   font-size: larger;
   margin: 40px 0;
   cursor: grab;
-  transition: box-shadow 0.7s ease, border 0.7s ease;
+  transition: box-shadow 0.7s ease, border 0.7s ease, transform 0s ease;
   &:not(.todo-completed):hover {
     box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
     border-color: transparent;
