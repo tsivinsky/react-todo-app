@@ -34,7 +34,17 @@
     max-width: 90%;
     word-wrap: break-word;
     cursor: pointer;
-    @media screen and (max-width: 430px) {
+  }
+  @media screen and (max-width: 430px) {
+    .btn-todo-drag {
+      width: 36px;
+      left: -60px;
+    }
+    .trashbin {
+      width: 36px;
+      right: -60px;
+    }
+    h3 {
       font-size: 14pt;
     }
   }
