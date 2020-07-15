@@ -22,11 +22,7 @@ main {
       @include todo-mixin;
     }
     .todo-completed {
-      cursor: default;
-      h3 {
-        text-decoration: line-through;
-        opacity: 0.6;
-      }
+      @include todo-completed;
     }
   }
 }
@@ -38,4 +34,8 @@ main {
 
 .todo-dragging {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.todo-dragging.todo-completed {
+  @include todo-completed;
 }
