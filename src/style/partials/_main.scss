@@ -14,13 +14,19 @@ main {
       font-size: 20pt;
       margin-top: 50%;
     }
-    // TODO: Maybe add gradient to the text
   }
   .todos {
     width: 50%;
     margin: 30px auto;
     .todo {
       @include todo-mixin;
+    }
+    .todo-completed {
+      cursor: default;
+      h3 {
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
     }
   }
 }
