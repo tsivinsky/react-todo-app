@@ -6,15 +6,28 @@
   display: flex;
   justify-content: center;
   border-radius: 10px;
-  box-shadow: 3px 3px 20px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 30px 5px;
   margin-top: 10px;
   font-size: larger;
   margin: 40px 0;
   cursor: grab;
-  transition: box-shadow 0.5s ease;
-  &:hover {
+  transition: box-shadow 0.7s ease, border 0.7s ease;
+  &:not(.todo-completed):hover {
     box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+  }
+  .btn-todo-drag {
+    position: absolute;
+    left: -70px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .trashbin {
+    position: absolute;
+    right: -70px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   h3 {
     max-width: 90%;
@@ -22,66 +35,6 @@
     cursor: pointer;
     @media screen and (max-width: 430px) {
       font-size: 14pt;
-    }
-  }
-  .settings {
-    position: absolute;
-    right: 15px;
-    bottom: 0;
-    img {
-      width: 36px;
-    }
-    .todo-settings {
-      position: absolute;
-      left: 36px;
-      bottom: 20px;
-      width: 150px;
-      height: 130px;
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 2px 5px 20px 5px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      cursor: default;
-      button {
-        cursor: pointer;
-        padding: 4px;
-        border: 1px solid;
-        background: none;
-        width: 80%;
-        font-size: 12pt;
-        transition: all 0.3s ease;
-        &:hover {
-          background: #000;
-          color: #fff;
-        }
-      }
-      @media screen and (max-width: 430px) {
-        width: 90px;
-        height: 90px;
-        button {
-          font-size: 10pt;
-        }
-      }
-    }
-    .todo-settings-enter {
-      opacity: 0;
-      transform: scale(0.9);
-    }
-    .todo-settings-enter-active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity 300ms, transform 300ms;
-    }
-    .todo-settings-exit {
-      opacity: 1;
-    }
-    .todo-settings-exit-active {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: opacity 300ms, transform 300ms;
     }
   }
 }
