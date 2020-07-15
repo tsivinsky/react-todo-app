@@ -58,6 +58,12 @@ export default function App() {
     </div>
   ));
 
+  function cancelDragging(e) {
+    if (e.target.className.toLowerCase() === "btn-todo-drag") return false;
+
+    return true;
+  }
+
   return (
     <>
       <header>
@@ -77,7 +83,7 @@ export default function App() {
             }
             lockAxis="y"
             helperClass="todo-dragging"
-            useDragHandle
+            shouldCancelStart={cancelDragging}
           />
         )}
       </main>
