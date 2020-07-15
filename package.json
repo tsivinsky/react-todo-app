@@ -20,7 +20,8 @@
     "react-scripts": "^3.4.1",
     "react-sortable-hoc": "^1.11.0",
     "react-transition-group": "^4.4.1",
-    "uuid": "^8.2.0"
+    "uuid": "^8.2.0",
+    "validator": "^13.1.1"
   },
   "browserslist": {
     "production": [
