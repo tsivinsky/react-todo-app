@@ -11,20 +11,20 @@ export default function App() {
   // Global state
   const [todos, addTodo, completeTodo, removeTodo, moveTodo] = useTodos();
 
-  const SortableItem = SortableElement(({ id, text, completed }) => (
+  const TodoWrapper = SortableElement(({ id, text, completed }) => (
     <Todo
       id={id}
       text={text}
       completed={completed}
       onComplete={(id) => completeTodo(id)}
-      onDelete={(id) => removeTodo(id)}
+      onRemove={(id) => removeTodo(id)}
     />
   ));
 
-  const SortableList = SortableContainer(() => (
+  const Todolist = SortableContainer(() => (
     <div className="todos">
       {todos.map((todo, i) => (
-        <SortableItem
+        <TodoWrapper
           key={i}
           index={i}
           id={todo._id}
@@ -34,12 +34,6 @@ export default function App() {
       ))}
     </div>
   ));
-
-  function cancelDragging(e) {
-    if (["todo"].indexOf(e.target.className.toLowerCase()) !== -1) return false;
-
-    return true;
-  }
 
   return (
     <>
@@ -54,11 +48,11 @@ export default function App() {
             It`s a freetime! ⌛
           </h2>
         ) : (
-          <SortableList
+          <Todolist
             onSortEnd={({ oldIndex, newIndex }) => moveTodo(oldIndex, newIndex)}
-            shouldCancelStart={cancelDragging}
             lockAxis="y"
             helperClass="todo-dragging"
+            useDragHandle
           />
         )}
       </main>
