@@ -1,6 +1,7 @@
 // Import dependencies
 import React from "react";
 import { SortableHandle } from "react-sortable-hoc";
+import { Twemoji } from "react-emoji-render";
 
 // Import images
 import Dots from "../images/dots.svg";
@@ -15,7 +16,7 @@ export default function Todo({ id, text, completed, onComplete, onRemove }) {
     <div className={`todo ${completed ? "todo-completed" : ""}`}>
       <DragHandler />
       <h3 className="todo-text" onClick={() => onComplete(id)}>
-        {text}
+        <Twemoji text={text} />
       </h3>
       <img
         src={Trash}
