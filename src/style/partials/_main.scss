@@ -27,8 +27,7 @@ main {
   }
 }
 
-.todo,
-.todo-dragging {
+.todo.todo-dragging {
   @include todo-mixin;
 }
 
