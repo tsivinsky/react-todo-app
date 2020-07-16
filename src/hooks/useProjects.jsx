@@ -56,6 +56,16 @@ export default function useProjects() {
   return [
     projects,
     {
+      saveProjectName: function (id = "", newName = "") {
+        const project = findProjectByID(id);
+
+        // Update project name
+        project.name = newName;
+
+        saveProject(project, id);
+      },
+    },
+    {
       addTodo: function (projectID = "", text = "") {
         // Find project by id
         const project = findProjectByID(projectID);

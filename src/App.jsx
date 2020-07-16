@@ -1,8 +1,9 @@
 // Import dependencies
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import useProjects from "./hooks/useProjects";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
 import { CSSTransition } from "react-transition-group";
+import EditableTitle from "react-contenteditable";
 
 // Import components
 import TodoForm from "./components/TodoForm";
@@ -15,6 +16,7 @@ export default function App() {
   // Global store
   const [
     projects,
+    { saveProjectName },
     { addTodo, completeTodo, removeTodo, moveTodo },
   ] = useProjects();
 
@@ -23,8 +25,9 @@ export default function App() {
     return projects[0];
   });
   const [showTimer, setShowTimer] = useState(false);
+  const titleRef = createRef();
 
-  // Request notifications access
+  // Request access to notifications
   useEffect(() => {
     if (Notification.permission !== "granted") Notification.requestPermission();
   }, []);
@@ -72,7 +75,13 @@ export default function App() {
         onClick={() => setShowTimer((prev) => !prev)}
       />
       <header>
-        <h1 className="title">{project.name}</h1>
+        <EditableTitle
+          innerRef={titleRef}
+          html={project.name}
+          tagName="h1"
+          className="title"
+          onBlur={(e) => saveProjectName(project._id, e.target.innerText)}
+        />
         <TodoForm onAdd={(value) => addTodo(project._id, value)} />
       </header>
       <main>
