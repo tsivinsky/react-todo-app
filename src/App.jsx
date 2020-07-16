@@ -2,11 +2,14 @@
 import React, { useState, useEffect } from "react";
 import useProjects from "./hooks/useProjects";
 import { SortableContainer, SortableElement } from "react-sortable-hoc";
-import queryString from "query-string";
+import { CSSTransition } from "react-transition-group";
 
 // Import components
 import TodoForm from "./components/TodoForm";
 import Todo from "./components/Todo";
+import Timer from "./components/Timer";
+
+import TimerImage from "./images/timer.svg";
 
 export default function App() {
   // Global store
@@ -15,24 +18,20 @@ export default function App() {
     { addTodo, completeTodo, removeTodo, moveTodo },
   ] = useProjects();
 
-  const params = queryString.parse(window.location.search);
-
   // Local states
   const [project, setProject] = useState(() => {
-    if (params.id) {
-      return projects.find((project) => project._id === params.id);
-    } else {
-      return projects[0];
-    }
+    return projects[0];
   });
+  const [showTimer, setShowTimer] = useState(false);
+
+  // Request notifications access
+  useEffect(() => {
+    if (Notification.permission !== "granted") Notification.requestPermission();
+  }, []);
 
   useEffect(() => {
-    if (params.id) {
-      setProject(projects.find((project) => project._id === params.id));
-    } else {
-      setProject(projects[0]);
-    }
-  }, [params.id, projects]);
+    setProject(projects[0]);
+  }, [projects]);
 
   const TodoWrapper = SortableElement(({ id, text, completed }) => (
     <Todo
@@ -66,11 +65,21 @@ export default function App() {
 
   return (
     <>
+      <img
+        src={TimerImage}
+        alt="Timer button"
+        className="btn-toggle-timer"
+        onClick={() => setShowTimer((prev) => !prev)}
+      />
       <header>
         <h1 className="title">{project.name}</h1>
         <TodoForm onAdd={(value) => addTodo(project._id, value)} />
       </header>
       <main>
+        <CSSTransition in={showTimer} timeout={400} classNames="timer">
+          <Timer />
+        </CSSTransition>
+
         {project.tasks.length === 0 ? (
           <h2 className="no-todos-message">
             You do not have any tasks. <br />
