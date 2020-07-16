@@ -13,7 +13,19 @@ body,
   height: 100%;
 }
 
+.btn-toggle-timer {
+  position: fixed;
+  left: 25px;
+  top: 30px;
+  background: #fff;
+  border-radius: 7px;
+  z-index: 999;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
 // Import partials
 @import "./partials/mixins";
 @import "./partials/header";
 @import "./partials/main";
+@import "./partials/timer";
