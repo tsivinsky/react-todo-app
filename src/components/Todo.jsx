@@ -16,7 +16,7 @@ export default function Todo({ id, text, completed, onComplete, onRemove }) {
       }
 
       return (
-        <a href={text} target="_blank">
+        <a href={text} target="_blank" rel="noopener noreferrer">
           {text}
         </a>
       );
