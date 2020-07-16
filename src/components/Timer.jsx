@@ -1,9 +1,18 @@
 // Import dependencies
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useTimer from "../hooks/useTimer";
 
+import MinutesPicker from "./MinutesPicker";
+
 export default function Timer() {
-  const [seconds, , isGoing, { startTimer, stopTimer }] = useTimer();
+  const [
+    seconds,
+    isBreak,
+    isGoing,
+    { startTimer, stopTimer, setBreak, changeMinutes },
+  ] = useTimer(25);
+
+  const [minutes, setMinutes] = useState(25);
 
   function addZero(number) {
     if (new String(number).length === 1) {
@@ -12,6 +21,35 @@ export default function Timer() {
 
     return number;
   }
+
+  function sendNotification() {
+    new Notification("Time is gone!", {
+      vibrate: true,
+      body: isBreak
+        ? "Break time is gone. Go working"
+        : "Working time is gone. Take a Break",
+    });
+  }
+
+  useEffect(() => {
+    if (seconds === 0) {
+      stopTimer();
+
+      sendNotification();
+
+      if (isBreak) return;
+
+      // Change timer's type to break
+      setBreak();
+
+      setTimeout(() => {
+        changeMinutes(5);
+
+        // Restart the timer
+        startTimer();
+      }, 2000);
+    }
+  }, [seconds]);
 
   return (
     <div className="timer-block">
@@ -27,6 +65,14 @@ export default function Timer() {
           {addZero(Math.floor(seconds % 60))}
         </h1>
       </div>
+      <MinutesPicker
+        minutes={minutes}
+        onSave={(mins) => {
+          changeMinutes(mins);
+          setMinutes(mins);
+        }}
+        isGoing={isGoing}
+      />
     </div>
   );
 }

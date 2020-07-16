@@ -1,26 +1,15 @@
 // Import dependencies
 import { useState } from "react";
 
-export default function useTimer() {
+export default function useTimer(mins = 25) {
   const [isBreak, setIsBreak] = useState(false);
   const [isGoing, setIsGoing] = useState(false);
   const [timer, setTimer] = useState(0);
   const [seconds, setSeconds] = useState(() => {
     if (isBreak) return 5 * 60;
 
-    return 25 * 60;
+    return mins * 60;
   });
-
-  function sendNotification() {
-    const body = isBreak
-      ? "Working time is gone. Take a Break"
-      : "Break time is gone. Go working";
-
-    const notification = new Notification("Time is gone!", {
-      vibrate: true,
-      body,
-    });
-  }
 
   return [
     seconds,
@@ -35,14 +24,6 @@ export default function useTimer() {
         setTimer(
           setInterval(() => {
             setSeconds((prev) => prev - 1);
-
-            if (!seconds) {
-              clearInterval(timer);
-
-              sendNotification();
-
-              setIsBreak((prev) => !prev);
-            }
           }, 1000)
         );
       },
@@ -50,6 +31,12 @@ export default function useTimer() {
         clearInterval(timer);
 
         setIsGoing(false);
+      },
+      setBreak: function () {
+        setIsBreak(true);
+      },
+      changeMinutes: function (mins = 5) {
+        setSeconds(mins * 60);
       },
     },
   ];
