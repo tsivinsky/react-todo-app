@@ -23,26 +23,39 @@
     transform: translateY(-50%);
     cursor: grab;
   }
-  .trashbin {
+  .buttons {
     position: absolute;
-    right: -70px;
+    right: -110px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    .trashbin,
+    .checkbox {
+      cursor: pointer;
+    }
   }
   h3 {
     max-width: 90%;
     word-wrap: break-word;
-    cursor: pointer;
   }
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 470px) {
+    .buttons {
+      right: -50px !important;
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 500px) {
     .btn-todo-drag {
       width: 36px;
       left: -60px;
     }
-    .trashbin {
-      width: 36px;
-      right: -60px;
+    .buttons {
+      right: -90px;
+      .trashbin,
+      .checkbox {
+        width: 36px;
+      }
     }
     h3 {
       font-size: 14pt;
