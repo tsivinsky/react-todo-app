@@ -1,28 +1,32 @@
 main {
-  width: 100%;
-  margin: 0 auto;
   .no-todos-message {
     text-align: center;
     font-size: 36pt;
     margin-top: 12%;
-    transform: translateY(-50%);
-    @media screen and (max-width: 700px) {
-      font-size: 32pt;
-      margin-top: 20%;
-    }
-    @media screen and (max-width: 430px) {
-      font-size: 20pt;
-      margin-top: 50%;
-    }
   }
   .todos {
     width: 50%;
-    margin: 30px auto;
+    margin: 0 auto;
     .todo {
       @include todo-mixin;
     }
     .todo-completed {
       @include todo-completed;
+    }
+  }
+  @media screen and (max-width: 1100px) and (min-width: 500px) {
+    .no-todos-message {
+      font-size: 32pt;
+      margin-top: 20%;
+    }
+  }
+  @media screen and (max-width: 500px) {
+    .no-todos-message {
+      font-size: 20pt;
+      margin-top: 50%;
+    }
+    .todos {
+      width: 85%;
     }
   }
 }
@@ -31,7 +35,7 @@ main {
   @include todo-mixin;
 }
 
-.todo-dragging {
+.todo-dragging > .inner-block {
   background: rgba(0, 0, 0, 0.1);
 }
 

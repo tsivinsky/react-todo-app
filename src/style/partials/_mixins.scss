@@ -1,64 +1,54 @@
 @mixin todo-mixin {
-  position: relative;
-  left: 0;
-  top: 0;
-  text-align: center;
   display: flex;
-  justify-content: center;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 30px 5px;
-  margin-top: 10px;
-  font-size: larger;
+  justify-content: space-evenly;
+  align-items: center;
   margin: 40px 0;
-  transition: box-shadow 0.7s ease, border 0.7s ease, transform 0s ease;
-  &:not(.todo-completed):hover {
-    box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
-    border-color: transparent;
-  }
   .btn-todo-drag {
-    position: absolute;
-    left: -70px;
-    top: 50%;
-    transform: translateY(-50%);
     cursor: grab;
   }
-  .buttons {
-    position: absolute;
-    right: -110px;
-    top: 50%;
-    transform: translateY(-50%);
+  .inner-block {
     display: flex;
-    align-items: center;
-    .trashbin,
-    .checkbox {
-      cursor: pointer;
+    justify-content: center;
+    width: 85%;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 30px 5px;
+    font-size: larger;
+    transition: box-shadow 0.7s ease, border 0.7s ease, transform 0s ease;
+    h3 {
+      max-width: 90%;
+      word-wrap: break-word;
+      text-align: center;
+      a {
+        text-decoration: none;
+        color: #000;
+        border-bottom: 3px solid transparent;
+        transition: border-bottom 0.3s ease;
+        &:hover {
+          border-bottom-color: #000;
+        }
+      }
     }
   }
-  h3 {
-    max-width: 90%;
-    word-wrap: break-word;
+  .trashbin {
+    cursor: pointer;
   }
-  @media screen and (max-width: 470px) {
-    .buttons {
-      right: -50px !important;
-      flex-direction: column;
+  &:not(.todo-completed) {
+    .inner-block:hover {
+      box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
+      border-color: transparent;
     }
   }
   @media screen and (max-width: 500px) {
-    .btn-todo-drag {
+    .btn-todo-drag,
+    .trashbin {
       width: 36px;
-      left: -60px;
     }
-    .buttons {
-      right: -90px;
-      .trashbin,
-      .checkbox {
-        width: 36px;
+    .inner-block {
+      width: 70%;
+      h3 {
+        font-size: 14pt;
       }
-    }
-    h3 {
-      font-size: 14pt;
     }
   }
 }
