@@ -23,12 +23,14 @@ export default function Timer() {
   }
 
   function sendNotification() {
-    new Notification("Time is gone!", {
-      vibrate: true,
-      body: isBreak
-        ? "Break time is gone. Go working"
-        : "Working time is gone. Take a Break",
-    });
+    if (Notification.permission === "granted") {
+      new Notification("Time is gone!", {
+        vibrate: true,
+        body: isBreak
+          ? "Break time is gone. Go working"
+          : "Working time is gone. Take a Break",
+      });
+    }
   }
 
   useEffect(() => {
