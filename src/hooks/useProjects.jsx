@@ -17,21 +17,20 @@ import arrayMove from "array-move";
   completed   Boolean
 */
 
+const defaultTasks = [
+  {
+    _id: uuid.v4(),
+    name: "My Tasks",
+    tasks: [],
+  },
+];
+
 export default function useProjects() {
   const [projects, setProjects] = useState(() => {
     if (localStorage.getItem("projects")) {
       return JSON.parse(localStorage.getItem("projects"));
     } else {
-      return [
-        {
-          _id: uuid.v4(),
-          name: "My Tasks",
-          tasks: [],
-          owner: localStorage.getItem("user")
-            ? localStorage.getItem("user")
-            : null,
-        },
-      ];
+      return defaultTasks;
     }
   });
 
@@ -56,7 +55,7 @@ export default function useProjects() {
   return [
     projects,
     {
-      saveProjectName: function (id = "", newName = "") {
+      updateProjectName: function (id = "", newName = "") {
         const project = findProjectByID(id);
 
         // Update project name
