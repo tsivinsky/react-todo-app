@@ -16,7 +16,7 @@ export default function App() {
   // Global store
   const [
     projects,
-    { saveProjectName },
+    { updateProjectName },
     { addTodo, completeTodo, removeTodo, moveTodo },
   ] = useProjects();
 
@@ -29,9 +29,10 @@ export default function App() {
 
   // Request access to notifications
   useEffect(() => {
-    if (Notification.permission !== "granted") Notification.requestPermission();
+    if (Notification.permission === "default") Notification.requestPermission();
   }, []);
 
+  // Update project
   useEffect(() => {
     setProject(projects[0]);
   }, [projects]);
@@ -85,7 +86,14 @@ export default function App() {
           html={project.name}
           tagName="h1"
           className="title"
-          onBlur={(e) => saveProjectName(project._id, e.target.innerText)}
+          onKeyDown={(e) => {
+            if (e.keyCode === 13) {
+              e.preventDefault();
+
+              updateProjectName(project._id, e.target.innerText);
+            }
+          }}
+          onBlur={(e) => updateProjectName(project._id, e.target.innerText)}
         />
         <TodoForm onAdd={(value) => addTodo(project._id, value)} />
       </header>
