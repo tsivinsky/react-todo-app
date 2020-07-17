@@ -14,7 +14,7 @@ body,
 }
 
 .btn-toggle-timer {
-  position: fixed;
+  position: absolute;
   left: 25px;
   top: 30px;
   background: #fff;
@@ -22,6 +22,10 @@ body,
   z-index: 999;
   transition: all 0.4s ease;
   cursor: pointer;
+}
+
+.fixed {
+  position: fixed;
 }
 
 // Import partials

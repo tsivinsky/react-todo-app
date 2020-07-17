@@ -72,7 +72,12 @@ export default function App() {
         src={TimerImage}
         alt="Timer button"
         className="btn-toggle-timer"
-        onClick={() => setShowTimer((prev) => !prev)}
+        onClick={(e) => {
+          // Toggle .fixed class
+          e.target.classList.toggle("fixed");
+
+          setShowTimer((prev) => !prev);
+        }}
       />
       <header>
         <EditableTitle
