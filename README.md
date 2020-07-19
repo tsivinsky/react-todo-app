@@ -1,5 +1,5 @@
 # Todo App
 
-Simple Todo app written in React.js
+Application for storing your tasks. In addition to it, you have a Pomodoro technique timer.
 
-You can view it [here](https://todo-app.tsivinsky.com/).
+You can view it [here](https://todo.tsivinsky.com/).
