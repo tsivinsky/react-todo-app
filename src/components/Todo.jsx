@@ -36,9 +36,9 @@ export default function Todo({ id, text, completed, onComplete, onRemove }) {
   }
 
   return (
-    <div className={`todo ${completed ? "todo-completed" : ""}`} {...handlers}>
+    <div className={`todo ${completed ? "todo-completed" : ""}`}>
       <img src={Dots} className="btn-todo-drag" alt="Dots button" />
-      <div className="inner-block">
+      <div className="inner-block" {...handlers}>
         <h3 className="todo-text">
           {text.split(" ").map((word, i) => (
             <React.Fragment key={i}>
