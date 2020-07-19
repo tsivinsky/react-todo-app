@@ -1,6 +1,6 @@
 // Import dependencies
 import React from "react";
-import { Twemoji } from "react-emoji-render";
+import Emoji from "react-emoji-render";
 import validator from "validator";
 import { useSwipeable } from "react-swipeable";
 
@@ -30,7 +30,7 @@ export default function Todo({ id, text, completed, onComplete, onRemove }) {
       );
     }
 
-    if (text.startsWith(":")) return <Twemoji text={text} />;
+    if (text.startsWith(":")) return <Emoji text={text} />;
 
     return text;
   }
