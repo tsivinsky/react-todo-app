@@ -86,14 +86,18 @@ export default function App() {
           html={project.name}
           tagName="h1"
           className="title"
-          onKeyDown={(e) => {
-            if (e.keyCode === 13) {
-              e.preventDefault();
+          onBlur={(e) => {
+            const newValue = e.target.innerText;
+            const currentValue = project.name;
 
-              updateProjectName(project._id, e.target.innerText);
+            if (!newValue) {
+              updateProjectName(project._id, currentValue);
+
+              // TODO: Show message "Project cannot have empty name" to user
+            } else {
+              updateProjectName(project._id, newValue);
             }
           }}
-          onBlur={(e) => updateProjectName(project._id, e.target.innerText)}
         />
         <TodoForm onAdd={(value) => addTodo(project._id, value)} />
       </header>
