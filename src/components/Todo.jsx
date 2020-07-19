@@ -10,9 +10,18 @@ import Trash from "../images/trash.svg";
 
 export default function Todo({ id, text, completed, onComplete, onRemove }) {
   const handlers = useSwipeable({
-    // Event for deleting task
-    onSwipedLeft: () => onComplete(id),
-    onSwipedRight: () => onRemove(id),
+    // Event for completing task
+    onSwipedLeft: (e) => {
+      if (e.deltaX >= 100) {
+        onComplete(id);
+      }
+    },
+    // Event for removing task
+    onSwipedRight: (e) => {
+      if (e.deltaX <= 100) {
+        onRemove(id);
+      }
+    },
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
   });
