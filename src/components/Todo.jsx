@@ -18,7 +18,7 @@ export default function Todo({ id, text, completed, onComplete, onRemove }) {
     },
     // Event for removing task
     onSwipedRight: (e) => {
-      if (e.deltaX <= 100) {
+      if (e.deltaX <= -100) {
         onRemove(id);
       }
     },
