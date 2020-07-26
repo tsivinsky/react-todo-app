@@ -121,6 +121,7 @@ export default function App() {
             shouldCancelStart={cancelDragging}
             lockToContainerEdges={true}
             lockOffset="30px"
+            helperContainer={() => document.querySelector(".todos")}
           />
         )}
       </main>
