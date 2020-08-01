@@ -4,32 +4,21 @@
   outline: none;
   box-sizing: border-box;
   font-family: Helvetica;
+  overflow: hidden;
 }
 
 html,
 body,
-#root,
-#root:first-child {
+#root {
   height: 100%;
 }
 
-.btn-toggle-timer {
-  position: absolute;
-  left: 20px;
-  top: 25px;
-  background: #fff;
-  border-radius: 7px;
-  z-index: 999;
-  transition: all 0.4s ease;
-  cursor: pointer;
-}
-
-.fixed {
-  position: fixed;
+#root {
+  display: grid;
+  grid-template-columns: 20% 1fr;
 }
 
 // Import partials
 @import "./partials/variables";
-@import "./partials/header";
+@import "./partials/sidebar";
 @import "./partials/main";
-@import "./partials/timer";

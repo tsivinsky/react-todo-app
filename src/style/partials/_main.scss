@@ -1,114 +1,90 @@
 main {
-  .no-todos-message {
-    text-align: center;
-    font-size: 36pt;
-    margin-top: 12%;
-  }
+  padding: 10px;
+  overflow-y: auto;
   .todos {
-    width: 50%;
-    margin: 0 auto;
-    .todo {
+    background: $secondary;
+    width: 80%;
+  }
+  .btn-new-task {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 999;
+    background-color: $primary;
+    border-radius: 50%;
+    padding: 5px;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+  }
+  .btn-new-task.rotated {
+    transform: rotate(45deg);
+  }
+  .todo-form {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: $secondary;
+    transform: translateY(25%);
+    opacity: 0;
+    transition: all 0.5s linear;
+    transition-property: transform, opacity;
+    form {
+      margin-top: 70px;
+      width: 50%;
+      height: 300px;
       display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      margin: 40px 0;
-      .btn-todo-drag {
-        cursor: grab;
-      }
-      .inner-block {
-        display: flex;
-        justify-content: center;
-        width: 85%;
-        border-radius: 10px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 30px 5px;
-        font-size: larger;
-        transition: box-shadow 0.7s ease, border 0.7s ease, transform 0s ease;
-        h3 {
-          max-width: 90%;
-          word-wrap: break-word;
-          text-align: center;
-          a {
-            text-decoration: none;
-            color: #000;
-            border-bottom: 3px solid #000;
-            transition: border-bottom 0.3s ease;
-            &:hover {
-              border-bottom-color: transparent;
-            }
-          }
+      justify-content: center;
+      align-items: flex-start;
+      input {
+        width: 100%;
+        padding: 10px;
+        font-size: 12pt;
+        background: none;
+        border: 1.5px solid $primary;
+        color: $primary;
+        transition: all 0.3s ease-in;
+        transition-property: border-color, box-shadow;
+        &:hover {
+          box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
         }
-      }
-      .trashbin {
-        cursor: pointer;
-      }
-      &:not(.todo-completed) {
-        .inner-block:hover {
-          box-shadow: 5px 3px 20px 10px rgba(0, 0, 0, 0.1);
+        &:focus {
           border-color: transparent;
-        }
-      }
-      @media screen and (max-width: 500px) {
-        .btn-todo-drag,
-        .trashbin {
-          width: 36px;
-        }
-        .inner-block {
-          width: 70%;
-          h3 {
-            font-size: 14pt;
-          }
+          box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
         }
       }
     }
-    .todo-completed,
-    .todo-dragging.todo-completed {
-      cursor: default;
-      h3 {
-        text-decoration: line-through;
-        opacity: 0.6;
-      }
-    }
-    .todo-dragging {
-      .inner-block {
-        background: rgba(0, 0, 0, 0.1);
+    @media screen and (max-width: $mobile) {
+      form {
+        width: 75%;
       }
     }
   }
-  .todos-enter {
+  .todo-form-enter,
+  .todo-form-exit-done {
+    transform: translateY(10%);
     opacity: 0;
   }
-  .todos-enter-active {
+  .todo-form-enter-active {
+    transform: translateY(0);
     opacity: 1;
-    transform: translateX(0);
-    transition: opacity 0.4s;
+    transition: all 0.5s linear;
+    transition-property: transform, opacity;
   }
-  .todos-enter-done {
-    opacity: 1;
-  }
-  .todos-exit {
-    opacity: 1;
-  }
-  .todos-exit-active {
+  .todo-form-exit-active {
+    transform: translateY(5%);
     opacity: 0;
-    transition: opacity 0.4s;
+    transition: all 0.5s linear;
+    transition-property: transform, opacity;
   }
-  .todos-exit-done {
-    opacity: 0;
-  }
-  @media screen and (max-width: 1100px) and (min-width: 500px) {
-    .no-todos-message {
-      font-size: 32pt;
-      margin-top: 20%;
-    }
-  }
-  @media screen and (max-width: 500px) {
-    .no-todos-message {
-      font-size: 20pt;
-      margin-top: 50%;
-    }
-    .todos {
-      width: 85%;
-    }
+  .todo-form-enter-done,
+  .todo-form-exit {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
